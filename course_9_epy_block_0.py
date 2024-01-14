@@ -18,23 +18,29 @@ class blk(gr.sync_block):  # other base classes are basic_block, decim_block, in
         gr.sync_block.__init__(
             self,
             name='Multiplexer',   # will show up in GRC
-            in_sig=[np.complex64, np.complex64],
+            in_sig=[np.complex64, np.complex64, np.complex64, np.complex64, np.complex64],
             out_sig=[np.complex64]
         )
         # if an attribute with the same name as a parameter is found,
         # a callback is registered (properties work, too).
         self.selectPortName= 'selectPort'
-        # self.message_port_register_in(pmt.intern(self.selectPortName))
+        self.message_port_register_in(pmt.intern(self.selectPortName))
         self.set_msg_handler(pmt.intern(self.selectPortName), self.handle_msg)
-        self.selector = True
+        self.selector = 0
     
     def handle_msg(self, msg):
-        self.selector = pmt.to_bool(msg)
+        self.selector = pmt.to_long(msg)
     
     def work(self, input_items, output_items):
         """example: multiply with constant"""
-        if(self.selector):
+        if(self.selector == 0):
             output_items[0][:] = input_items[0]
-        else:
+        elif(self.selector == 1):
             output_items[0][:] = input_items[1]
+        elif(self.selector == 2):
+            output_items[0][:] = input_items[2]
+        elif(self.selector == 3):
+            output_items[0][:] = input_items[3]
+        else:
+            output_items[0][:] = input_items[4]
         return len(output_items[0])
