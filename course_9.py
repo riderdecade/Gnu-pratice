@@ -33,6 +33,8 @@ import signal
 from argparse import ArgumentParser
 from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
+from gnuradio import uhd
+import time
 import course_9_epy_block_0 as epy_block_0  # embedded python block
 import course_9_epy_block_1 as epy_block_1  # embedded python block
 
@@ -81,6 +83,36 @@ class course_9(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
+        self.uhd_usrp_source_0 = uhd.usrp_source(
+            ",".join(("", '')),
+            uhd.stream_args(
+                cpu_format="fc32",
+                otw_format="sc8",
+                args='',
+                channels=list(range(0,1)),
+            ),
+        )
+        self.uhd_usrp_source_0.set_samp_rate(samp_rate)
+        self.uhd_usrp_source_0.set_time_unknown_pps(uhd.time_spec(0))
+
+        self.uhd_usrp_source_0.set_center_freq(0, 0)
+        self.uhd_usrp_source_0.set_antenna("RX1", 0)
+        self.uhd_usrp_source_0.set_gain(0, 0)
+        self.uhd_usrp_sink_0 = uhd.usrp_sink(
+            ",".join(("", '')),
+            uhd.stream_args(
+                cpu_format="fc32",
+                args='',
+                channels=list(range(0,1)),
+            ),
+            "",
+        )
+        self.uhd_usrp_sink_0.set_samp_rate(samp_rate)
+        self.uhd_usrp_sink_0.set_time_unknown_pps(uhd.time_spec(0))
+
+        self.uhd_usrp_sink_0.set_center_freq(0, 0)
+        self.uhd_usrp_sink_0.set_antenna("TX/RX", 0)
+        self.uhd_usrp_sink_0.set_gain(0, 0)
         self.qtgui_time_sink_x_0 = qtgui.time_sink_c(
             1024, #size
             samp_rate, #samp_rate
@@ -134,7 +166,6 @@ class course_9(gr.top_block, Qt.QWidget):
         self.top_layout.addWidget(self._qtgui_time_sink_x_0_win)
         self.epy_block_1 = epy_block_1.blk(Num_Samples_To_Count=40960)
         self.epy_block_0 = epy_block_0.blk()
-        self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_message_debug_0 = blocks.message_debug(True)
         self.analog_sig_source_x_4 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 5000, 1, 0, 0)
         self.analog_sig_source_x_3 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 4000, 1, 0, 0)
@@ -148,14 +179,15 @@ class course_9(gr.top_block, Qt.QWidget):
         ##################################################
         self.msg_connect((self.epy_block_1, 'messageOutput'), (self.blocks_message_debug_0, 'print'))
         self.msg_connect((self.epy_block_1, 'messageOutput'), (self.epy_block_0, 'selectPort'))
+        self.msg_connect((self.uhd_usrp_sink_0, 'async_msgs'), (self.uhd_usrp_source_0, 'command'))
         self.connect((self.analog_sig_source_x_0, 0), (self.epy_block_0, 1))
         self.connect((self.analog_sig_source_x_1, 0), (self.epy_block_0, 0))
         self.connect((self.analog_sig_source_x_2, 0), (self.epy_block_0, 2))
         self.connect((self.analog_sig_source_x_3, 0), (self.epy_block_0, 3))
         self.connect((self.analog_sig_source_x_4, 0), (self.epy_block_0, 4))
-        self.connect((self.blocks_throttle_0, 0), (self.qtgui_time_sink_x_0, 0))
         self.connect((self.epy_block_0, 0), (self.epy_block_1, 0))
-        self.connect((self.epy_block_1, 0), (self.blocks_throttle_0, 0))
+        self.connect((self.epy_block_1, 0), (self.uhd_usrp_sink_0, 0))
+        self.connect((self.uhd_usrp_source_0, 0), (self.qtgui_time_sink_x_0, 0))
 
 
     def closeEvent(self, event):
@@ -176,8 +208,9 @@ class course_9(gr.top_block, Qt.QWidget):
         self.analog_sig_source_x_2.set_sampling_freq(self.samp_rate)
         self.analog_sig_source_x_3.set_sampling_freq(self.samp_rate)
         self.analog_sig_source_x_4.set_sampling_freq(self.samp_rate)
-        self.blocks_throttle_0.set_sample_rate(self.samp_rate)
         self.qtgui_time_sink_x_0.set_samp_rate(self.samp_rate)
+        self.uhd_usrp_source_0.set_samp_rate(self.samp_rate)
+        self.uhd_usrp_sink_0.set_samp_rate(self.samp_rate)
 
 
 
