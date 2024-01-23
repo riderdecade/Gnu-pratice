@@ -1,0 +1,1247 @@
+options:
+  parameters:
+    author: iiot434
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: sdphy_record
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: sdphy_record
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: bw
+  id: variable
+  parameters:
+    comment: ''
+    value: 250e3
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [312, 96.0]
+    rotation: 0
+    state: true
+- name: fc_rx
+  id: variable
+  parameters:
+    comment: ''
+    value: 911e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [392, 16.0]
+    rotation: 0
+    state: true
+- name: fc_tx
+  id: variable
+  parameters:
+    comment: ''
+    value: 910.0e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [312, 16.0]
+    rotation: 0
+    state: true
+- name: fft_size
+  id: variable
+  parameters:
+    comment: ''
+    value: '256'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [472, 16.0]
+    rotation: 0
+    state: true
+- name: fs
+  id: variable
+  parameters:
+    comment: ''
+    value: 3e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [240, 16.0]
+    rotation: 0
+    state: enabled
+- name: gain_rx
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: ''
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: '30'
+    step: '1'
+    stop: '80'
+    value: '60'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [832, 20.0]
+    rotation: 0
+    state: true
+- name: gain_tx
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: ''
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '1'
+    stop: '100'
+    value: '80'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [728, 20.0]
+    rotation: 0
+    state: true
+- name: label_0
+  id: variable_qtgui_label
+  parameters:
+    comment: ''
+    formatter: None
+    gui_hint: ''
+    label: Protocol
+    type: string
+    value: protocol
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [936, 24.0]
+    rotation: 0
+    state: true
+- name: label_1
+  id: variable_qtgui_label
+  parameters:
+    comment: ''
+    formatter: None
+    gui_hint: ''
+    label: frequency_exciation
+    type: real
+    value: fc_tx
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1096, 28.0]
+    rotation: 0
+    state: true
+- name: label_1_0
+  id: variable_qtgui_label
+  parameters:
+    comment: ''
+    formatter: None
+    gui_hint: ''
+    label: frequency_backscatter
+    type: real
+    value: fc_rx
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1072, 124.0]
+    rotation: 0
+    state: true
+- name: label_1_2
+  id: variable_qtgui_label
+  parameters:
+    comment: ''
+    formatter: None
+    gui_hint: ''
+    label: sampling rate
+    type: real
+    value: samp_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [936, 124.0]
+    rotation: 0
+    state: true
+- name: protocol
+  id: variable
+  parameters:
+    comment: ''
+    value: '"DCSS Backscatter"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [576, 88.0]
+    rotation: 0
+    state: true
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: 250e3
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [152, 16.0]
+    rotation: 0
+    state: enabled
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: 50e3
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [152, 88.0]
+    rotation: 0
+    state: disabled
+- name: sf
+  id: variable
+  parameters:
+    comment: ''
+    value: '8'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [392, 96.0]
+    rotation: 0
+    state: true
+- name: update_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '0.000002'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [632, 16.0]
+    rotation: 0
+    state: true
+- name: window
+  id: variable
+  parameters:
+    comment: ''
+    value: '4096'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [544, 16.0]
+    rotation: 0
+    state: true
+- name: blocks_file_sink_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: /home/iiot434/lwh434/gr-dcss/v3/data
+    type: complex
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [275, 573]
+    rotation: 0
+    state: disabled
+- name: blocks_file_source_0
+  id: blocks_file_source
+  parameters:
+    affinity: ''
+    alias: ''
+    begin_tag: pmt.PMT_NIL
+    comment: ''
+    file: /home/iiot434/lwh434/gr-dcss/v3/wave_dcss_64_pure_1Mfs_3Msr_0920
+    length: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    repeat: 'True'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [30, 188]
+    rotation: 0
+    state: enabled
+- name: blocks_null_sink_0
+  id: blocks_null_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bus_structure_sink: '[[0,],]'
+    comment: ''
+    num_inputs: '1'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [841, 561]
+    rotation: 0
+    state: disabled
+- name: blocks_stream_to_vector_0
+  id: blocks_stream_to_vector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: window
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [337, 512]
+    rotation: 0
+    state: disabled
+- name: blocks_vector_to_stream_0
+  id: blocks_vector_to_stream
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: window
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [706, 511]
+    rotation: 0
+    state: disabled
+- name: epy_block_6
+  id: epy_block
+  parameters:
+    _source_code: "\"\"\"\nEmbedded Python Blocks:\n\nEach time this file is saved,\
+      \ GRC will instantiate the first class it finds\nto get ports and parameters\
+      \ of your block. The arguments to __init__  will\nbe the parameters. All of\
+      \ them are required to have default values!\n\"\"\"\n\nimport numpy as np\n\
+      import math\nfrom gnuradio import gr\n\n\nclass blk(gr.sync_block):  # other\
+      \ base classes are basic_block, decim_block, interp_block\n    \"\"\"Embedded\
+      \ Python Block example - a simple multiply const\"\"\"\n\n    def __init__(self,\
+      \ window=4096, bw=250e3, sf=8, samp_rate=250e3):  # only default arguments here\n\
+      \        \"\"\"arguments to this function show up as parameters in GRC\"\"\"\
+      \n        gr.sync_block.__init__(\n            self,\n            name='dcss_demod_v6',\
+      \   # will show up in GRC\n            in_sig=[(np.complex64, window)],\n  \
+      \          out_sig=[(np.complex64, window)]\n        )\n        # if an attribute\
+      \ with the same name as a parameter is found,\n        # a callback is registered\
+      \ (properties work, too).\n        \"\"\" radio parameter \"\"\"\n        self.window\
+      \ = window\n        self.ind = 0\n        self.bw = bw\n        self.sf = sf\n\
+      \        self.samp_rate = samp_rate\n        self.ber = 1\n        self.flag_demod\
+      \ = 0\n        self.n_symb = 64\n        self.tag_data = np.zeros(48)\n    \
+      \    \"\"\" buffer & sync \"\"\"\n        self.buffer_size = 5\n        self.buffer_data\
+      \ = np.zeros(4096*self.buffer_size,dtype=complex)  # data stream\n        self.buffer_xcorr\
+      \ = np.zeros(self.buffer_size) # xcorr max value\n        self.buffer_xcorr_overlap\
+      \ = np.zeros(self.buffer_size)  # xcorr max value overlap\n        self.raw_peaks\
+      \ = np.zeros(self.buffer_size)\n        self.raw_peaks_overlap = np.zeros(self.buffer_size)\n\
+      \        self.pointer_data = 0\n        self.pointer_xcorr = 0\n        self.pointer_sync\
+      \ = -1\n        self.CORR_THRESH = 0.7\n        \"\"\" parameter preparison:\
+      \ generate chirp symbol \"\"\"\n        self.a1 = self.ind / pow(2, self.sf)\
+      \ * self.bw - self.bw / 2\n        self.a2 = self.bw**2 / 2**self.sf\n     \
+      \   self.n_t = round((math.pow(2, self.sf) / self.bw) / (1 / self.bw))\n   \
+      \     self.t = np.linspace(0, (math.pow(2, self.sf) - 1) / self.bw, self.n_t)\n\
+      \        self.dchirp = math.e ** (1j * 2 * math.pi * (-0.5 * self.a2 * self.t\
+      \ ** 2 + self.bw / 2 * self.t + 0))\n        self.uchirp = math.e ** (1j * 2\
+      \ * math.pi * (+0.5 * self.a2 * self.t ** 2 + self.bw / 2 * self.t + 0))\n \
+      \       self.preamble = np.concatenate((self.dchirp, self.dchirp), axis=0) \
+      \   \n        self.n_preamble = round(np.size(self.preamble,0))\n        self.n_ook\
+      \ = 16\n        self.n_offset = 0\n\n    def work(self, input_items, output_items):\n\
+      \        \"\"\"working function: sdphy-sensor dcss demodulation version 5\"\"\
+      \"\n        \n        \"\"\" system initialization\"\"\"\n        self.pointer_sync\
+      \ = -1\n        self.flag_demod = 0\n        \n        \"\"\" buffer loading\
+      \ and correlation record \"\"\"\n        matfile = np.array(input_items[0])\n\
+      \        matfile = matfile.transpose()     \n        n_sample = np.size(matfile,\
+      \ 0) # 4096\n        n_frame = np.size(matfile, 1)  # 1     \n        for i\
+      \ in range(n_frame):\n            data_in = matfile[:, i]\n            data_in\
+      \ = np.squeeze(data_in)\n            \"\"\" record last xcorr results \"\"\"\
+      \n            # # pointer_data now points to data_in last round\n          \
+      \  # # pointer_xcorr now points to the latest data_in\n            \n      \
+      \      tmp_data = self.buffer_data[int(self.pointer_data * 4096):int((self.pointer_data\
+      \ + 1) * 4096)]\n            tmp_xcorr = np.correlate(tmp_data, self.preamble,\
+      \ mode='valid')\n            # self.buffer_xcorr[int(self.pointer_data)] = np.max(abs(tmp_xcorr))\n\
+      \            self.raw_peaks[int(self.pointer_data)] = np.argmax(abs(tmp_xcorr))\n\
+      \            self.buffer_xcorr[int(self.pointer_data)] = abs(tmp_xcorr[int(self.raw_peaks[int(self.pointer_data)])])\n\
+      \            \n            tmp_data_overlap = np.concatenate((self.buffer_data[int(self.pointer_data\
+      \ * 4096 + 2048):int((self.pointer_data+1) * 4096)], data_in[int(0):int(2048)]),\
+      \ axis=0)\n            tmp_xcorr_overlap = np.correlate(tmp_data_overlap, self.preamble,\
+      \ mode='valid')\n            # self.buffer_xcorr_overlap[int(self.pointer_data)]\
+      \ = np.max(abs(tmp_xcorr_overlap))\n            self.raw_peaks_overlap[int(self.pointer_data)]\
+      \ = np.argmax(abs(tmp_xcorr_overlap))\n            self.buffer_xcorr_overlap[int(self.pointer_data)]\
+      \ = abs(tmp_xcorr_overlap[int(self.raw_peaks_overlap[int(self.pointer_data)])])\n\
+      \            \n            \"\"\" find possible peaks \"\"\"\n            threshold1\
+      \ = self.CORR_THRESH * np.max(self.buffer_xcorr)\n            threshold2 = self.CORR_THRESH\
+      \ * np.max(self.buffer_xcorr_overlap)\n            if threshold1 > threshold2:\n\
+      \                threshold = threshold1\n            else:\n               \
+      \ threshold = threshold2\n            \"\"\" # if it has not been sync, then\
+      \ keeps trying; else, skip \"\"\"\n            if self.pointer_sync != -1:\n\
+      \                if self.pointer_data == self.buffer_size-1:  # idx from 0 to\
+      \ self.buffer_size-1\n                    self.pointer_data = 0\n          \
+      \      else:\n                    self.pointer_data = self.pointer_data + 1\n\
+      \                if self.pointer_data == self.buffer_size-1:\n             \
+      \       self.pointer_xcorr = 0\n                else:\n                    self.pointer_xcorr\
+      \ = self.pointer_data + 1\n                self.buffer_data[int(self.pointer_data\
+      \ * 4096):int((self.pointer_data + 1) * 4096)] = data_in  # buffer: (4096*self.buffer_size,)\
+      \        \n                continue\n            else:\n                tmp_0\
+      \ = self.buffer_xcorr[int(self.pointer_xcorr)]\n                tmp_1 = self.buffer_xcorr_overlap[int(self.pointer_xcorr)]\n\
+      \                if tmp_0 > threshold and tmp_1 > threshold:  # xcorr = data\
+      \ + 1\n                    self.pointer_sync = self.pointer_xcorr\n        \
+      \            if tmp_0 >= tmp_1:\n                        tmp_buffer = np.concatenate((self.buffer_data[int(self.pointer_sync\
+      \ * 4096):int(self.buffer_size * 4096)],\n                                 \
+      \                    self.buffer_data[int(0):int((self.pointer_sync) * 4096)]),\
+      \ axis=0)\n                        peaks_raw = self.raw_peaks[int(self.pointer_sync)]\n\
+      \                    else:\n                        tmp_buffer = np.concatenate(\n\
+      \                            (self.buffer_data[int(self.pointer_sync * 4096\
+      \ + 2048):int(self.buffer_size * 4096)],\n                             self.buffer_data[int(0):int((self.pointer_sync)\
+      \ * 4096)]), axis=0)\n                        tmp_buffer = np.concatenate((tmp_buffer,\
+      \ data_in[0:2048]), axis=0)\n                        peaks_raw = self.raw_peaks_overlap[int(self.pointer_sync)]\n\
+      \                elif tmp_0 > threshold and tmp_1 <= threshold:\n          \
+      \          self.pointer_sync = self.pointer_xcorr\n                    tmp_buffer\
+      \ = np.concatenate((self.buffer_data[int(self.pointer_sync * 4096):int(self.buffer_size\
+      \ * 4096)],\n                                                 self.buffer_data[int(0):int((self.pointer_sync)\
+      \ * 4096)]), axis=0)\n                    peaks_raw = self.raw_peaks[int(self.pointer_sync)]\n\
+      \                elif tmp_0 <= threshold and tmp_1 > threshold:\n          \
+      \          self.pointer_sync = self.pointer_xcorr\n                    tmp_buffer\
+      \ = np.concatenate((self.buffer_data[int(self.pointer_sync * 4096 + 2048):int(self.buffer_size\
+      \ * 4096)],\n                                                 self.buffer_data[int(0):int((self.pointer_sync)\
+      \ * 4096)]), axis=0)\n                    tmp_buffer = np.concatenate((tmp_buffer,\
+      \ data_in[0:2048]), axis=0)\n                    peaks_raw = self.raw_peaks_overlap[int(self.pointer_sync)]\n\
+      \                else:\n                    self.pointer_sync = -1\n       \
+      \     \"\"\" renew buffer_data, pointer_data and pointer_xcorr \"\"\"\n    \
+      \        if self.pointer_data == self.buffer_size-1:  # idx from 0 to 19\n \
+      \               self.pointer_data = 0\n            else:\n                self.pointer_data\
+      \ = self.pointer_data + 1\n            if self.pointer_data == self.buffer_size-1:\n\
+      \                self.pointer_xcorr = 0\n            else:\n               \
+      \ self.pointer_xcorr = self.pointer_data + 1\n            self.buffer_data[int(self.pointer_data\
+      \ * 4096):int((self.pointer_data + 1) * 4096)] = data_in  # buffer: (4096*20,)\
+      \      \n         \n        \"\"\" set flag for demodulation \"\"\"\n      \
+      \  if self.pointer_sync != -1:\n            self.flag_demod = 1   \n       \
+      \     # print(np.shape(np.array(input_items)))\n        else:\n            self.flag_demod\
+      \ = 0     \n                   \n        \"\"\" run demodulation process \"\"\
+      \"\n        if self.flag_demod==1:\n            # print('find packets!')   \n\
+      \            \"\"\" extract whole radio packet \"\"\"\n            n_sample_offset\
+      \ = self.n_preamble + self.n_ook + self.n_offset\n            n_sample_packet\
+      \ = round(np.size(self.dchirp,0) * self.n_symb)\n            sp = peaks_raw\
+      \ + n_sample_offset\n            ep = (sp + n_sample_packet - 1) + 1  \n   \
+      \         packet = tmp_buffer[int(sp):int(ep)]              \n            \"\
+      \"\" new version demodulation \"\"\"\n            len_chirp = np.size(self.dchirp,\
+      \ 0)\n            len_sequence = 16\n            sequence_bit = np.zeros(len_sequence)\n\
+      \            sequence_strength = np.zeros(len_sequence)\n            threshold_coarse\
+      \ = np.average(abs(packet[0*len_chirp:len_sequence*len_chirp]))\n          \
+      \  for ii in range(len_sequence):  # 0,1,...,15\n                idx00 = ii\
+      \ * len_chirp\n                idx01 = (ii + 1) * len_chirp\n              \
+      \  tmp_symbol0 = packet[idx00:idx01]\n                sequence_strength[ii]\
+      \ = np.average(abs(tmp_symbol0))\n                if sequence_strength[ii] >=\
+      \ threshold_coarse:\n                    sequence_bit[ii] = 1\n            \
+      \    else:\n                    sequence_bit[ii] = 0\n            # if sequence_bit.tolist()\
+      \ == [1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0]:\n            if sequence_bit.tolist()\
+      \ == [0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0]:\n            # if sequence_bit.tolist()\
+      \ == [1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0]:\n                print(\"\
+      ID Correct\")\n                len_data = 48\n                data_bit = np.zeros(len_data)\n\
+      \                threshold_fine = threshold_coarse\n                for ii in\
+      \ range(len_data):  # 0,1,...,47\n                    idx10 = (ii + len_sequence)\
+      \ * len_chirp\n                    idx11 = (ii + len_sequence + 1) * len_chirp\n\
+      \                    tmp_symbol1 = packet[idx10:idx11]\n                   \
+      \ tmp_strength = np.average(abs(tmp_symbol1))\n                    if tmp_strength\
+      \ >= threshold_fine:\n                        data_bit[ii] = 1\n           \
+      \         else:\n                        data_bit[ii] = 0\n                self.tag_data\
+      \ = data_bit\n                print(self.tag_data)\n            else:\n    \
+      \            print(\"ID Error\")\n                print(sequence_bit)\n    \
+      \            len_data = 48        \n        else:\n            # print('no peaks\
+      \ found!')\n            bits_rx = []\n                                     \
+      \   \n        \"\"\" return and datastream output \"\"\"\n        output_items[0][:]\
+      \ = input_items[0]\n        \n        return len(output_items[0])\n        \n\
+      \        \n        \n        \n        \n"
+    affinity: ''
+    alias: ''
+    bw: bw
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    sf: sf
+    window: window
+  states:
+    _io_cache: ('dcss_demod_v6', 'blk', [('window', '4096'), ('bw', '250000.0'), ('sf',
+      '8'), ('samp_rate', '250000.0')], [('0', 'complex', 4096)], [('0', 'complex',
+      4096)], 'Embedded Python Block example - a simple multiply const', ['bw', 'samp_rate',
+      'sf', 'window'])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [506, 515]
+    rotation: 0
+    state: disabled
+- name: qtgui_waterfall_sink_x_0
+  id: qtgui_waterfall_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    axislabels: 'True'
+    bw: samp_rate
+    color1: '0'
+    color10: '0'
+    color2: '0'
+    color3: '0'
+    color4: '0'
+    color5: '0'
+    color6: '0'
+    color7: '0'
+    color8: '0'
+    color9: '0'
+    comment: ''
+    fc: '0'
+    fftsize: fft_size
+    freqhalf: 'True'
+    grid: 'False'
+    gui_hint: ''
+    int_max: '10'
+    int_min: '-140'
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    nconnections: '1'
+    showports: 'False'
+    type: complex
+    update_time: update_rate
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [328, 396.0]
+    rotation: 0
+    state: enabled
+- name: uhd_usrp_sink_0
+  id: uhd_usrp_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    ant0: TX/RX
+    ant1: TX/RX
+    ant10: TX/RX
+    ant11: TX/RX
+    ant12: TX/RX
+    ant13: TX/RX
+    ant14: TX/RX
+    ant15: TX/RX
+    ant16: TX/RX
+    ant17: TX/RX
+    ant18: TX/RX
+    ant19: TX/RX
+    ant2: TX/RX
+    ant20: TX/RX
+    ant21: TX/RX
+    ant22: TX/RX
+    ant23: TX/RX
+    ant24: TX/RX
+    ant25: TX/RX
+    ant26: TX/RX
+    ant27: TX/RX
+    ant28: TX/RX
+    ant29: TX/RX
+    ant3: TX/RX
+    ant30: TX/RX
+    ant31: TX/RX
+    ant4: TX/RX
+    ant5: TX/RX
+    ant6: TX/RX
+    ant7: TX/RX
+    ant8: TX/RX
+    ant9: TX/RX
+    bw0: fs
+    bw1: '0'
+    bw10: '0'
+    bw11: '0'
+    bw12: '0'
+    bw13: '0'
+    bw14: '0'
+    bw15: '0'
+    bw16: '0'
+    bw17: '0'
+    bw18: '0'
+    bw19: '0'
+    bw2: '0'
+    bw20: '0'
+    bw21: '0'
+    bw22: '0'
+    bw23: '0'
+    bw24: '0'
+    bw25: '0'
+    bw26: '0'
+    bw27: '0'
+    bw28: '0'
+    bw29: '0'
+    bw3: '0'
+    bw30: '0'
+    bw31: '0'
+    bw4: '0'
+    bw5: '0'
+    bw6: '0'
+    bw7: '0'
+    bw8: '0'
+    bw9: '0'
+    center_freq0: fc_tx
+    center_freq1: '0'
+    center_freq10: '0'
+    center_freq11: '0'
+    center_freq12: '0'
+    center_freq13: '0'
+    center_freq14: '0'
+    center_freq15: '0'
+    center_freq16: '0'
+    center_freq17: '0'
+    center_freq18: '0'
+    center_freq19: '0'
+    center_freq2: '0'
+    center_freq20: '0'
+    center_freq21: '0'
+    center_freq22: '0'
+    center_freq23: '0'
+    center_freq24: '0'
+    center_freq25: '0'
+    center_freq26: '0'
+    center_freq27: '0'
+    center_freq28: '0'
+    center_freq29: '0'
+    center_freq3: '0'
+    center_freq30: '0'
+    center_freq31: '0'
+    center_freq4: '0'
+    center_freq5: '0'
+    center_freq6: '0'
+    center_freq7: '0'
+    center_freq8: '0'
+    center_freq9: '0'
+    clock_rate: 0e0
+    clock_source0: ''
+    clock_source1: ''
+    clock_source2: ''
+    clock_source3: ''
+    clock_source4: ''
+    clock_source5: ''
+    clock_source6: ''
+    clock_source7: ''
+    comment: ''
+    dev_addr: '""'
+    dev_args: '""'
+    gain0: gain_tx
+    gain1: '0'
+    gain10: '0'
+    gain11: '0'
+    gain12: '0'
+    gain13: '0'
+    gain14: '0'
+    gain15: '0'
+    gain16: '0'
+    gain17: '0'
+    gain18: '0'
+    gain19: '0'
+    gain2: '0'
+    gain20: '0'
+    gain21: '0'
+    gain22: '0'
+    gain23: '0'
+    gain24: '0'
+    gain25: '0'
+    gain26: '0'
+    gain27: '0'
+    gain28: '0'
+    gain29: '0'
+    gain3: '0'
+    gain30: '0'
+    gain31: '0'
+    gain4: '0'
+    gain5: '0'
+    gain6: '0'
+    gain7: '0'
+    gain8: '0'
+    gain9: '0'
+    len_tag_name: ''
+    lo_export0: 'False'
+    lo_export1: 'False'
+    lo_export10: 'False'
+    lo_export11: 'False'
+    lo_export12: 'False'
+    lo_export13: 'False'
+    lo_export14: 'False'
+    lo_export15: 'False'
+    lo_export16: 'False'
+    lo_export17: 'False'
+    lo_export18: 'False'
+    lo_export19: 'False'
+    lo_export2: 'False'
+    lo_export20: 'False'
+    lo_export21: 'False'
+    lo_export22: 'False'
+    lo_export23: 'False'
+    lo_export24: 'False'
+    lo_export25: 'False'
+    lo_export26: 'False'
+    lo_export27: 'False'
+    lo_export28: 'False'
+    lo_export29: 'False'
+    lo_export3: 'False'
+    lo_export30: 'False'
+    lo_export31: 'False'
+    lo_export4: 'False'
+    lo_export5: 'False'
+    lo_export6: 'False'
+    lo_export7: 'False'
+    lo_export8: 'False'
+    lo_export9: 'False'
+    lo_source0: internal
+    lo_source1: internal
+    lo_source10: internal
+    lo_source11: internal
+    lo_source12: internal
+    lo_source13: internal
+    lo_source14: internal
+    lo_source15: internal
+    lo_source16: internal
+    lo_source17: internal
+    lo_source18: internal
+    lo_source19: internal
+    lo_source2: internal
+    lo_source20: internal
+    lo_source21: internal
+    lo_source22: internal
+    lo_source23: internal
+    lo_source24: internal
+    lo_source25: internal
+    lo_source26: internal
+    lo_source27: internal
+    lo_source28: internal
+    lo_source29: internal
+    lo_source3: internal
+    lo_source30: internal
+    lo_source31: internal
+    lo_source4: internal
+    lo_source5: internal
+    lo_source6: internal
+    lo_source7: internal
+    lo_source8: internal
+    lo_source9: internal
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nchan: '1'
+    norm_gain0: 'False'
+    norm_gain1: 'False'
+    norm_gain10: 'False'
+    norm_gain11: 'False'
+    norm_gain12: 'False'
+    norm_gain13: 'False'
+    norm_gain14: 'False'
+    norm_gain15: 'False'
+    norm_gain16: 'False'
+    norm_gain17: 'False'
+    norm_gain18: 'False'
+    norm_gain19: 'False'
+    norm_gain2: 'False'
+    norm_gain20: 'False'
+    norm_gain21: 'False'
+    norm_gain22: 'False'
+    norm_gain23: 'False'
+    norm_gain24: 'False'
+    norm_gain25: 'False'
+    norm_gain26: 'False'
+    norm_gain27: 'False'
+    norm_gain28: 'False'
+    norm_gain29: 'False'
+    norm_gain3: 'False'
+    norm_gain30: 'False'
+    norm_gain31: 'False'
+    norm_gain4: 'False'
+    norm_gain5: 'False'
+    norm_gain6: 'False'
+    norm_gain7: 'False'
+    norm_gain8: 'False'
+    norm_gain9: 'False'
+    num_mboards: '1'
+    otw: ''
+    samp_rate: fs
+    sd_spec0: ''
+    sd_spec1: ''
+    sd_spec2: ''
+    sd_spec3: ''
+    sd_spec4: ''
+    sd_spec5: ''
+    sd_spec6: ''
+    sd_spec7: ''
+    show_lo_controls: 'False'
+    stream_args: ''
+    stream_chans: '[]'
+    sync: sync
+    time_source0: ''
+    time_source1: ''
+    time_source2: ''
+    time_source3: ''
+    time_source4: ''
+    time_source5: ''
+    time_source6: ''
+    time_source7: ''
+    type: fc32
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [382, 190]
+    rotation: 0
+    state: enabled
+- name: uhd_usrp_source_0
+  id: uhd_usrp_source
+  parameters:
+    affinity: ''
+    alias: ''
+    ant0: RX2
+    ant1: RX2
+    ant10: RX2
+    ant11: RX2
+    ant12: RX2
+    ant13: RX2
+    ant14: RX2
+    ant15: RX2
+    ant16: RX2
+    ant17: RX2
+    ant18: RX2
+    ant19: RX2
+    ant2: RX2
+    ant20: RX2
+    ant21: RX2
+    ant22: RX2
+    ant23: RX2
+    ant24: RX2
+    ant25: RX2
+    ant26: RX2
+    ant27: RX2
+    ant28: RX2
+    ant29: RX2
+    ant3: RX2
+    ant30: RX2
+    ant31: RX2
+    ant4: RX2
+    ant5: RX2
+    ant6: RX2
+    ant7: RX2
+    ant8: RX2
+    ant9: RX2
+    bw0: '0'
+    bw1: '0'
+    bw10: '0'
+    bw11: '0'
+    bw12: '0'
+    bw13: '0'
+    bw14: '0'
+    bw15: '0'
+    bw16: '0'
+    bw17: '0'
+    bw18: '0'
+    bw19: '0'
+    bw2: '0'
+    bw20: '0'
+    bw21: '0'
+    bw22: '0'
+    bw23: '0'
+    bw24: '0'
+    bw25: '0'
+    bw26: '0'
+    bw27: '0'
+    bw28: '0'
+    bw29: '0'
+    bw3: '0'
+    bw30: '0'
+    bw31: '0'
+    bw4: '0'
+    bw5: '0'
+    bw6: '0'
+    bw7: '0'
+    bw8: '0'
+    bw9: '0'
+    center_freq0: fc_rx
+    center_freq1: '0'
+    center_freq10: '0'
+    center_freq11: '0'
+    center_freq12: '0'
+    center_freq13: '0'
+    center_freq14: '0'
+    center_freq15: '0'
+    center_freq16: '0'
+    center_freq17: '0'
+    center_freq18: '0'
+    center_freq19: '0'
+    center_freq2: '0'
+    center_freq20: '0'
+    center_freq21: '0'
+    center_freq22: '0'
+    center_freq23: '0'
+    center_freq24: '0'
+    center_freq25: '0'
+    center_freq26: '0'
+    center_freq27: '0'
+    center_freq28: '0'
+    center_freq29: '0'
+    center_freq3: '0'
+    center_freq30: '0'
+    center_freq31: '0'
+    center_freq4: '0'
+    center_freq5: '0'
+    center_freq6: '0'
+    center_freq7: '0'
+    center_freq8: '0'
+    center_freq9: '0'
+    clock_rate: 0e0
+    clock_source0: ''
+    clock_source1: ''
+    clock_source2: ''
+    clock_source3: ''
+    clock_source4: ''
+    clock_source5: ''
+    clock_source6: ''
+    clock_source7: ''
+    comment: ''
+    dc_offs_enb0: '""'
+    dc_offs_enb1: '""'
+    dc_offs_enb10: '""'
+    dc_offs_enb11: '""'
+    dc_offs_enb12: '""'
+    dc_offs_enb13: '""'
+    dc_offs_enb14: '""'
+    dc_offs_enb15: '""'
+    dc_offs_enb16: '""'
+    dc_offs_enb17: '""'
+    dc_offs_enb18: '""'
+    dc_offs_enb19: '""'
+    dc_offs_enb2: '""'
+    dc_offs_enb20: '""'
+    dc_offs_enb21: '""'
+    dc_offs_enb22: '""'
+    dc_offs_enb23: '""'
+    dc_offs_enb24: '""'
+    dc_offs_enb25: '""'
+    dc_offs_enb26: '""'
+    dc_offs_enb27: '""'
+    dc_offs_enb28: '""'
+    dc_offs_enb29: '""'
+    dc_offs_enb3: '""'
+    dc_offs_enb30: '""'
+    dc_offs_enb31: '""'
+    dc_offs_enb4: '""'
+    dc_offs_enb5: '""'
+    dc_offs_enb6: '""'
+    dc_offs_enb7: '""'
+    dc_offs_enb8: '""'
+    dc_offs_enb9: '""'
+    dev_addr: '""'
+    dev_args: '""'
+    gain0: gain_rx
+    gain1: '0'
+    gain10: '0'
+    gain11: '0'
+    gain12: '0'
+    gain13: '0'
+    gain14: '0'
+    gain15: '0'
+    gain16: '0'
+    gain17: '0'
+    gain18: '0'
+    gain19: '0'
+    gain2: '0'
+    gain20: '0'
+    gain21: '0'
+    gain22: '0'
+    gain23: '0'
+    gain24: '0'
+    gain25: '0'
+    gain26: '0'
+    gain27: '0'
+    gain28: '0'
+    gain29: '0'
+    gain3: '0'
+    gain30: '0'
+    gain31: '0'
+    gain4: '0'
+    gain5: '0'
+    gain6: '0'
+    gain7: '0'
+    gain8: '0'
+    gain9: '0'
+    iq_imbal_enb0: '""'
+    iq_imbal_enb1: '""'
+    iq_imbal_enb10: '""'
+    iq_imbal_enb11: '""'
+    iq_imbal_enb12: '""'
+    iq_imbal_enb13: '""'
+    iq_imbal_enb14: '""'
+    iq_imbal_enb15: '""'
+    iq_imbal_enb16: '""'
+    iq_imbal_enb17: '""'
+    iq_imbal_enb18: '""'
+    iq_imbal_enb19: '""'
+    iq_imbal_enb2: '""'
+    iq_imbal_enb20: '""'
+    iq_imbal_enb21: '""'
+    iq_imbal_enb22: '""'
+    iq_imbal_enb23: '""'
+    iq_imbal_enb24: '""'
+    iq_imbal_enb25: '""'
+    iq_imbal_enb26: '""'
+    iq_imbal_enb27: '""'
+    iq_imbal_enb28: '""'
+    iq_imbal_enb29: '""'
+    iq_imbal_enb3: '""'
+    iq_imbal_enb30: '""'
+    iq_imbal_enb31: '""'
+    iq_imbal_enb4: '""'
+    iq_imbal_enb5: '""'
+    iq_imbal_enb6: '""'
+    iq_imbal_enb7: '""'
+    iq_imbal_enb8: '""'
+    iq_imbal_enb9: '""'
+    lo_export0: 'False'
+    lo_export1: 'False'
+    lo_export10: 'False'
+    lo_export11: 'False'
+    lo_export12: 'False'
+    lo_export13: 'False'
+    lo_export14: 'False'
+    lo_export15: 'False'
+    lo_export16: 'False'
+    lo_export17: 'False'
+    lo_export18: 'False'
+    lo_export19: 'False'
+    lo_export2: 'False'
+    lo_export20: 'False'
+    lo_export21: 'False'
+    lo_export22: 'False'
+    lo_export23: 'False'
+    lo_export24: 'False'
+    lo_export25: 'False'
+    lo_export26: 'False'
+    lo_export27: 'False'
+    lo_export28: 'False'
+    lo_export29: 'False'
+    lo_export3: 'False'
+    lo_export30: 'False'
+    lo_export31: 'False'
+    lo_export4: 'False'
+    lo_export5: 'False'
+    lo_export6: 'False'
+    lo_export7: 'False'
+    lo_export8: 'False'
+    lo_export9: 'False'
+    lo_source0: internal
+    lo_source1: internal
+    lo_source10: internal
+    lo_source11: internal
+    lo_source12: internal
+    lo_source13: internal
+    lo_source14: internal
+    lo_source15: internal
+    lo_source16: internal
+    lo_source17: internal
+    lo_source18: internal
+    lo_source19: internal
+    lo_source2: internal
+    lo_source20: internal
+    lo_source21: internal
+    lo_source22: internal
+    lo_source23: internal
+    lo_source24: internal
+    lo_source25: internal
+    lo_source26: internal
+    lo_source27: internal
+    lo_source28: internal
+    lo_source29: internal
+    lo_source3: internal
+    lo_source30: internal
+    lo_source31: internal
+    lo_source4: internal
+    lo_source5: internal
+    lo_source6: internal
+    lo_source7: internal
+    lo_source8: internal
+    lo_source9: internal
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nchan: '1'
+    norm_gain0: 'False'
+    norm_gain1: 'False'
+    norm_gain10: 'False'
+    norm_gain11: 'False'
+    norm_gain12: 'False'
+    norm_gain13: 'False'
+    norm_gain14: 'False'
+    norm_gain15: 'False'
+    norm_gain16: 'False'
+    norm_gain17: 'False'
+    norm_gain18: 'False'
+    norm_gain19: 'False'
+    norm_gain2: 'False'
+    norm_gain20: 'False'
+    norm_gain21: 'False'
+    norm_gain22: 'False'
+    norm_gain23: 'False'
+    norm_gain24: 'False'
+    norm_gain25: 'False'
+    norm_gain26: 'False'
+    norm_gain27: 'False'
+    norm_gain28: 'False'
+    norm_gain29: 'False'
+    norm_gain3: 'False'
+    norm_gain30: 'False'
+    norm_gain31: 'False'
+    norm_gain4: 'False'
+    norm_gain5: 'False'
+    norm_gain6: 'False'
+    norm_gain7: 'False'
+    norm_gain8: 'False'
+    norm_gain9: 'False'
+    num_mboards: '1'
+    otw: ''
+    rx_agc0: Default
+    rx_agc1: Default
+    rx_agc10: Default
+    rx_agc11: Default
+    rx_agc12: Default
+    rx_agc13: Default
+    rx_agc14: Default
+    rx_agc15: Default
+    rx_agc16: Default
+    rx_agc17: Default
+    rx_agc18: Default
+    rx_agc19: Default
+    rx_agc2: Default
+    rx_agc20: Default
+    rx_agc21: Default
+    rx_agc22: Default
+    rx_agc23: Default
+    rx_agc24: Default
+    rx_agc25: Default
+    rx_agc26: Default
+    rx_agc27: Default
+    rx_agc28: Default
+    rx_agc29: Default
+    rx_agc3: Default
+    rx_agc30: Default
+    rx_agc31: Default
+    rx_agc4: Default
+    rx_agc5: Default
+    rx_agc6: Default
+    rx_agc7: Default
+    rx_agc8: Default
+    rx_agc9: Default
+    samp_rate: samp_rate
+    sd_spec0: ''
+    sd_spec1: ''
+    sd_spec2: ''
+    sd_spec3: ''
+    sd_spec4: ''
+    sd_spec5: ''
+    sd_spec6: ''
+    sd_spec7: ''
+    show_lo_controls: 'False'
+    stream_args: ''
+    stream_chans: '[]'
+    sync: sync
+    time_source0: ''
+    time_source1: ''
+    time_source2: ''
+    time_source3: ''
+    time_source4: ''
+    time_source5: ''
+    time_source6: ''
+    time_source7: ''
+    type: fc32
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [80, 392.0]
+    rotation: 0
+    state: enabled
+
+connections:
+- [blocks_file_source_0, '0', uhd_usrp_sink_0, '0']
+- [blocks_stream_to_vector_0, '0', epy_block_6, '0']
+- [blocks_vector_to_stream_0, '0', blocks_null_sink_0, '0']
+- [epy_block_6, '0', blocks_vector_to_stream_0, '0']
+- [uhd_usrp_source_0, '0', blocks_file_sink_0, '0']
+- [uhd_usrp_source_0, '0', blocks_stream_to_vector_0, '0']
+- [uhd_usrp_source_0, '0', qtgui_waterfall_sink_x_0, '0']
+
+metadata:
+  file_format: 1

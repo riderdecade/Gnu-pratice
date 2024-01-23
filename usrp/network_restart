@@ -1,0 +1,114 @@
+## command to network
+
+sudo service network-manager stop
+sudo gedit /var/lib/NetworkManager/NetworkManager.state
+"turn NetworkingEnabled=false to NetworkingEnabled=true"
+sudo service network-manager start
+
+
+sudo /etc/init.d/networking force-reload
+sudo /etc/init.d/networking restart
+
+## command route
+cd xxx	enter
+cd ..	back
+cd ./   recovery
+cd /	to top
+
+## command to mnt
+cd /
+cd mnt/
+ls
+
+## command unzip
+tar xzvf xxx.tar.gz
+tar xvf xxx.tar
+unrar e xxx.rar
+unzip xxx.zip
+
+## command zip
+tar -cvf jpg.tar *.jpg
+tar -cvf jpg.tar.gz *.jpg
+rar a jpg.rar *.jpg
+zip jpg.zip *.zip
+
+## delete & create
+mkdir xxx
+rmdir xxx
+rm aaa.xx
+cp aaa.xx
+
+## version check
+git --version
+cat /proc/version
+Linux version 5.4.0-87-generic (buildd@lgw01-amd64-059) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #98~18.04.1-Ubuntu SMP Wed Sep 22 10:45:04 UTC 2021
+
+dpkg -l xxx   check the package
+whereis xxx   check the installation location
+echo xxx      display xxx
+history
+history -l
+ls -a         show all file including hidden. green is exe, blue is path, white is hidden
+python2
+import sys
+print sys.path
+cp -r /home/packageA /home/packageB   cp folder packageA under to folder packageB
+
+## 3 steps to bulid the driver for Pluto SDR on GNU Radio
+To use IIO DeviceLgr-iio in GNU Radio based on Linux OS, we need following dependencies:
+1.libiio 2.libad9361 3.GNU Radio and development packages 4.swig
+*First we need to download and build libiio, which requires the following packages:
+libxml2 libxl2-dev bison flex cmake git libaio-dev
+~$ sudo apt install xxx
+~$ sudo apt install doxygen		# documentation for the C API
+~$ sudo apt install libusb-1.0-0-dev	#  USE backend	
+~$ sudo apt install libavahi-common-dev libavahi-client-dev # zeroconf add avahi
+~$ git clone https://github.com/analogdevicesinc/libiio.git
+~$ cd libiio
+~$ cmake .
+~$ make
+~$ sudo make install
+~$ cd ..
+*Secondly, download and build libad9361-iio
+~$ git clone https://github.com/analogdevicesinc/libad9361-iio.git
+~$ cd libad9361-iio
+~$ cmake .
+~$ make
+~$ sudo make install
+~$ cd ..
+*Finally, download and build gr-iio
+~$ git clone https://github.com/analogdevicesinc/gr-iio.git
+~$ cd gr-iio
+~$ cmake .
+~$ make
+~$ sudo make install
+~$ cd ..
+~$ sudo ldconfig
+
+Tips:
+sudo apt install xxx -> sudo apt-get install xxx
+git clone http://xxx/xx.git -> git clone git://xxx/xx.git
+ctrl+shift+c
+ctrl+shift+v
+use up and down to choose history command
+in bin folder is exe file which called .rpm in Fedaral and .deb in Ubuntu
+
+
+
+## path for gnuradio block
+peacerl@ubuntu:~$ gnuradio-companion
+<<< Welcome to GNU Radio Companion 3.7.11 >>>
+Block paths:
+	/home/peacerl/.grc.grc_gnuradio
+	/usr/share/gnuradio/grc/blocks
+	/usr/local/share/gnuradio/grc/blocks
+
+
+peacerl@ubuntu:/usr/local/share/gnuradio/grc/blocks$ ls
+lte_bch_crc_check_ant_chooser_bb.xml  lte_pcfich_demux_vcvc.xml
+lte_bch_viterbi_vfvb.xml              lte_pcfich_scramble_sequencer_m.xml
+
+
+
+
+
